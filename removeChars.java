@@ -13,5 +13,60 @@ retornar = p.og..m.cio.
 public class removeChars{
 	public static void main(String [] args){
 
+		char[] a = {'p','r','o','g','r','a','m','a','c','i','o','n'};
+		char[] b = {'a','r','n'};
+
+		System.out.println(removeChars(a,b));
+
 	}
-} 
+
+	//Método que borra de un arreglo de chars las letras que se encuentren en otro arreglo de chars
+	public static char[] removeChars (char[] a, char[] b) {
+
+		boolean[] letters;
+		int ascii;
+
+		letters = letterChecker(b);
+
+		//Ciclo que revisa que letras del arreglo a se encuentran 
+		for (int i = 0; i<a.length;i++){
+			ascii = a[i];
+
+			if(ascii>=97){
+				if (letters[ascii -97]) //Si la posicion del valor ascii - 97 en el arreglo de booleans es verdadero, eso es porque esa letra se encuentra en el arreglo b
+					a[i] = '.';
+			}
+
+			else{
+				if (letters[ascii -39]) //Si la posicion del valor ascii - 39 en el arreglo de booleans es verdadero, eso es porque esa letra se encuentra en el arreglo b
+					a[i] = '.';
+			}	
+
+		}
+		return a;
+	}
+
+	//Método que marca en un arreglo de booleans cuales son las letras que se encuentran en un arreglo de chars
+	public static boolean[] letterChecker (char[] b){
+
+		boolean[] letters = new boolean[52]; //Arreglo que representa el alfabeto, tanto las letras minusculas como mayusculas
+		int ascii; //Int que se va a utilizar para guardar el valor ascii de cada caracter
+
+		//Ciclo que marca en el arreglo letters cuales letras existen en el arreglo b
+		for(int i=0; i<b.length;i++){
+
+			ascii = b[i]; //b[i] es la letra en la posición i, se convierte a su valor en ascii
+
+			//Si el valor de ascii es mayor o igual a 97 es porque es una letra minuscula
+			if(ascii>=97)
+				letters[ascii - 97] = true; //Se le resta 97 al valor ascii y el boolean en esa posición del arreglo se marca como true
+
+			//Si es menor a 97 es una letra mayuscula. Las mayusculas se acomodan a partir de la posicion 26 en el arreglo de booleans
+			else
+				letters[ascii - 39] = true; //Se le resta 39 al valor ascii y el boolean en esa posición del arreglo se marca como true
+		}
+
+		return letters;
+	}
+
+}
