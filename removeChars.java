@@ -25,13 +25,13 @@ public class removeChars{
 
 		boolean[] letters;
 		int ascii;
-
+		// LALO-COMENTARIO :) Buen uno de metodo aparte! muy bien
 		letters = letterChecker(b);
 
 		//Ciclo que revisa que letras del arreglo a se encuentran 
 		for (int i = 0; i<a.length;i++){
 			ascii = a[i];
-
+			// LALO-COMENTARIO :) Deberias poner otro IF tal vez para que no se rompa si el ejemplo contiene un caracter que no sea letra
 			if(ascii>=97){
 				if (letters[ascii -97]) //Si la posicion del valor ascii - 97 en el arreglo de booleans es verdadero, eso es porque esa letra se encuentra en el arreglo b
 					a[i] = '.';
@@ -54,12 +54,13 @@ public class removeChars{
 
 		//Ciclo que marca en el arreglo letters cuales letras existen en el arreglo b
 		for(int i=0; i<b.length;i++){
-
+			// LALO-COMENTARIO :) La linea que sigue no es necesaria porque el casteo a int se hace automatico
 			ascii = b[i]; //b[i] es la letra en la posición i, se convierte a su valor en ascii
 
 			//Si el valor de ascii es mayor o igual a 97 es porque es una letra minuscula
 			if(ascii>=97)
-				letters[ascii - 97] = true; //Se le resta 97 al valor ascii y el boolean en esa posición del arreglo se marca como true
+				// LALO-COMENTARIO :) Ejemplo del comentario anterior (puedes restarle directamente un entero a un caracter)
+				letters[b[i] - 97] = true; //Se le resta 97 al valor ascii y el boolean en esa posición del arreglo se marca como true
 
 			//Si es menor a 97 es una letra mayuscula. Las mayusculas se acomodan a partir de la posicion 26 en el arreglo de booleans
 			else
@@ -68,5 +69,5 @@ public class removeChars{
 
 		return letters;
 	}
-
+	// LALO-COMENTARIO :) Muy bien hecho, ahora piensa como le harias si no solo fueran letras (el codigo seria mas sencillo)
 }
